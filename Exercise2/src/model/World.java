@@ -4,6 +4,10 @@ public class World {
 
 	private Point size;
 	private Player player;
+
+	public World() {
+		reset();
+	}
 	
 	public void reset() {
 		size = new Point(300, 300);
