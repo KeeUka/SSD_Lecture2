@@ -9,11 +9,14 @@ public class Game {
 	private long startTime;
 	private long timeInGame;
 
+	// TODO: Need a list to store commands.
+	
 	public Game() {
 		world = new World();
 	}
 
 	public void startGame() {
+		world.reset();
 		over = false;
 		startTime = System.currentTimeMillis();
 		while (!over) {
@@ -49,18 +52,22 @@ public class Game {
 	}
 
 	public void turnPlayerWest() {
+		// TODO: Use command pattern
 		world.getPlayer().turnWest();
 	}
 
 	public void turnPlayerEast() {
+		// TODO: Use command pattern
 		world.getPlayer().turnEast();
 	}
 
 	public void turnPlayerNorth() {
+		// TODO: Use command pattern
 		world.getPlayer().turnNorth();
 	}
 
 	public void turnPlayerSouth() {
+		// TODO: Use command pattern
 		world.getPlayer().turnSouth();
 	}
 

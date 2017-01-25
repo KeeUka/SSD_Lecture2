@@ -4,8 +4,8 @@ public class World {
 
 	private Point size;
 	private Player player;
-
-	public World() {
+	
+	public void reset() {
 		size = new Point(300, 300);
 		player = new Player(new Point(size.getX() / 2, size.getY() * 3 / 4));
 		player.turnNorth();

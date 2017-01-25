@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 
 import model.Game;
@@ -50,6 +51,13 @@ public class UI extends JFrame implements KeyListener {
 		add(gamePane);
 		
 		replayButton = new JButton("Replay");
+		replayButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				replay();
+			}
+		});
 		replayButton.setEnabled(false);
 		add(replayButton, BorderLayout.SOUTH);
 	}
@@ -88,7 +96,13 @@ public class UI extends JFrame implements KeyListener {
 	}
 
 	public void replay() {
-		game.startReplay();
+		SwingWorker sw = new SwingWorker() {
+		    public Object doInBackground(){
+		      game.startReplay();            
+		        return null;
+		   }
+		 }; 
+		 sw.execute();
 	}
 	
 	@Override
