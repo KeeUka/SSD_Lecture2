@@ -5,21 +5,37 @@ public class Game {
 	public static final long DELAY = 10;
 
 	private World world;
-	private boolean gameOver;
+	private boolean over;
+	private long startTime;
+	private long timeInGame;
 
 	public Game() {
 		world = new World();
 	}
 
-	public void start() {
-		gameOver = false;
-		while (!gameOver) {
+	public void startGame() {
+		over = false;
+		startTime = System.currentTimeMillis();
+		while (!over) {
+			timeInGame = System.currentTimeMillis() - startTime;
 			world.update();
-			gameOver = world.playerHitWalls();
+			over = world.playerHitWalls();
 			delay();
 		}
 	}
 
+	public void startReplay() {
+		// TODO: Implement this method 
+	}
+	
+	public boolean isOver() {
+		return over;
+	}
+	
+	public long getTimeInGame() {
+		return timeInGame;
+	}
+	
 	public Point getWorldSize() {
 		return world.getSize();
 	}

@@ -50,6 +50,7 @@ public class UI extends JFrame implements KeyListener {
 		add(gamePane);
 		
 		replayButton = new JButton("Replay");
+		replayButton.setEnabled(false);
 		add(replayButton, BorderLayout.SOUTH);
 	}
 	
@@ -59,6 +60,9 @@ public class UI extends JFrame implements KeyListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gamePane.repaint();
+				if(game.isOver()) {
+					replayButton.setEnabled(true);
+				}
 			}
 		};
 		renderLoop.addActionListener(listener);
@@ -80,11 +84,11 @@ public class UI extends JFrame implements KeyListener {
 	}
 
 	public void start() {
-		game.start();
+		game.startGame();
 	}
 
 	public void replay() {
-		//TODO: Implement this method
+		game.startReplay();
 	}
 	
 	@Override
@@ -108,14 +112,10 @@ public class UI extends JFrame implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// Do nothing
-	}
+	public void keyTyped(KeyEvent e) { }
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// Do nothing.
-	}
+	public void keyReleased(KeyEvent e) { }
 
 	public static void main(String[] args) {
 		UI ui = new UI();
